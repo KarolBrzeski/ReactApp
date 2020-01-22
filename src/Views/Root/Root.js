@@ -1,7 +1,11 @@
 import React from 'react';
+import Button from 'components/Button/Button';
 
 const Root = () => (
-  <h1>Hello React</h1>
+  <div>
+    <h1>Hello react</h1>
+    <Button>Butonn Components</Button>
+  </div>
 );
 
 export default Root;
