@@ -4,7 +4,7 @@
         "prettier",
         "prettier/react"
     ],
-    "env":{
+    "env": {
         "jest": true
     },
     "globals": {
@@ -19,5 +19,17 @@
                 ]
             }
         ]
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        }
     }
 }
