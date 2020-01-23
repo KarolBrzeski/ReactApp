@@ -20,7 +20,6 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-
 `;
 
 export default GlobalSyle;
