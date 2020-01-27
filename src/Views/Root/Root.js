@@ -2,10 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import GlobalSyle from 'theme/GlobalStyle';
-
-const theme = {
-  primary: '#ffd82b',
-};
+import { theme } from 'theme/mainTheme';
 
 const Root = () => (
   <div>
