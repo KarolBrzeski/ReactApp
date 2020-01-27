@@ -36,6 +36,7 @@ export const DynamicButton = () => {
     </Button>
   );
 };
+
 export const Aqua = () => (
   <Button color="#00FFFF" textColor="black">
     AQUA
