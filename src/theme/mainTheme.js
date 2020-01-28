@@ -7,11 +7,12 @@ export const theme = {
   grey300: 'hsl(0, 0%, 70%)',
   black: 'hsl(0, 0%, 0%)',
   light: 300,
+  regular: 400,
   bold: 600,
   fontSize: {
     xxs: '1rem',
     xs: '1.2rem',
-    s: '6.6rem',
+    s: '1.6rem',
     m: '2.1rem',
     l: '2.4rem',
     xl: '4rem',

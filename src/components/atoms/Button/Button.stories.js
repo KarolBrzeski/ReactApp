@@ -1,5 +1,6 @@
 import React from 'react';
 import { withKnobs, text, select } from '@storybook/addon-knobs';
+import { theme } from '../../../theme/mainTheme';
 import Button from './Button';
 
 export default {
@@ -25,8 +26,9 @@ export const DynamicButton = () => {
   };
 
   const defaultValue = '#ffd82b';
+  const defaultTextValue = 'white';
   const value = select(label, options, defaultValue);
-  const textValue = select(textLabel, textOptions);
+  const textValue = select(textLabel, textOptions, defaultTextValue);
 
   const name = text('Name', 'Colorful btn');
 
@@ -42,5 +44,5 @@ export const Aqua = () => (
     AQUA
   </Button>
 );
-export const Primary = () => <Button>Hello Karol</Button>;
+export const Primary = () => <Button theme={theme}>Hello Karol</Button>;
 export const Secondary = () => <Button secondary>Hello Karol</Button>;
