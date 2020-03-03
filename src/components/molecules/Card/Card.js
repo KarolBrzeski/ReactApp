@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Button from 'components/atoms/Button/Button';
 import Heading from 'components/atoms/Heading/Heading';
+import LinkIcon from 'assets/icons/link.svg';
 
 const StyledWrapper = styled.div`
   min-height: 380px;
@@ -18,8 +19,13 @@ const StyledWrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
+  position: relative;
   padding: 17px 30px 15px;
-  background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
+  background: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
+
+  :first-of-type {
+    z-index: 9999;
+  }
 
   ${({ flex }) =>
     flex &&
@@ -44,11 +50,38 @@ const StyledParagraph = styled(Paragraph)`
   margin-bottom: 40px;
 `;
 
+const StyledAvatar = styled.img`
+  width: 86px;
+  height: 86px;
+  border: 5px solid ${({ theme }) => theme.secondary};
+  border-radius: 50px;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+`;
+
+const StyledLinkButton = styled.a`
+  display: block;
+  width: 47px;
+  height: 47px;
+  border-radius: 50px;
+  background: white url(${LinkIcon}) no-repeat;
+  background-size: 60%;
+  background-position: 50%;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+`;
+
 const Card = ({ cardType }) => (
   <StyledWrapper>
     <InnerWrapper activeColor={cardType}>
       <StyledHeading>React Card</StyledHeading>
       <DateInfo>3 days ago</DateInfo>
+      {cardType === 'secondary' && <StyledAvatar src="https://avatars.io/platform/userId" />}
+      {cardType === 'tertiary' && (
+        <StyledLinkButton href="https://pl.reactjs.org/docs/getting-started.html" />
+      )}
     </InnerWrapper>
     <InnerWrapper flex>
       <StyledParagraph>

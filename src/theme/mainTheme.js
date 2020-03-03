@@ -1,6 +1,6 @@
 export const theme = {
-  primary: 'hsl(152, 62%, 45%)',
-  secondary: 'hsl(103, 76%, 63%)',
+  primary: 'linear-gradient(141.81deg, #2CB978 3.05%, rgba(131, 232, 90, 0.92) 97.63%)',
+  secondary: 'hsl(103, 76%, 75%)',
   tertiary: 'hsl(188, 79%, 30%)',
   grey100: 'hsl(0, 0%, 96%)',
   grey200: 'hsl(0, 0%, 90%)',
