@@ -6,4 +6,6 @@ export default {
   title: 'Card',
 };
 
-export const Normal = () => <Card />;
+export const Primary = () => <Card />;
+export const Secondary = () => <Card cardType="secondary" />;
+export const Tertiary = () => <Card cardType="tertiary" />;
