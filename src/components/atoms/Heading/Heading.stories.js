@@ -4,7 +4,7 @@ import { theme } from '../../../theme/mainTheme';
 
 export default {
   component: Heading,
-  title: 'Heading',
+  title: 'Atoms/Heading',
 };
 
 export const Normal = () => <Heading theme={theme}>Hello Karol</Heading>;

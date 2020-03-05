@@ -10,7 +10,7 @@ import { theme } from '../../../theme/mainTheme';
 
 export default {
   component: ButtonIcon,
-  title: 'Button Icon',
+  title: 'Atoms/Button Icon',
   decorators: [
     storyFn => <CustomBackgroundColor theme={theme.primary}>{storyFn()}</CustomBackgroundColor>,
   ],

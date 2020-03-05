@@ -17,6 +17,7 @@ html {
 body {
     /* 1.6rem = 16px */
     font-size: 1.6rem; 
+    padding-left: 150px;
     font-family: "Montserrat", sans-serif;
 }
 
