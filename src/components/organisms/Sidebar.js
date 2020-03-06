@@ -1,5 +1,8 @@
+/* eslint-disable react/require-default-props */
+
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ButtonIcon from 'components/atoms/Buttonicon/Buttonicon';
 import bulbIcon from 'assets/icons/bulb.svg';
@@ -15,7 +18,7 @@ const StyledWrapper = styled.nav`
   padding: 25px 0;
   width: 150px;
   height: 100vh;
-  background: ${({ theme }) => theme.primary};
+  background: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : theme.primary)};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,22 +47,26 @@ const StyledLinksList = styled.ul`
   list-style: none;
 `;
 
-const Sidebar = () => (
-  <StyledWrapper>
+const Sidebar = ({ pageType }) => (
+  <StyledWrapper activeColor={pageType}>
     <StyledLogoLink to="/" />
     <StyledLinksList>
       <li>
         <ButtonIcon exact as={NavLink} to="/" icon={penIcon} activeclass="active" />
       </li>
       <li>
-        <ButtonIcon as={NavLink} to="/twitters" icon={twitterIcon} activeclass="active" />
+        <ButtonIcon as={NavLink} to="/articles" icon={bulbIcon} activeclass="active" />
       </li>
       <li>
-        <ButtonIcon as={NavLink} to="/articles" icon={bulbIcon} activeclass="active" />
+        <ButtonIcon as={NavLink} to="/twitters" icon={twitterIcon} activeclass="active" />
       </li>
     </StyledLinksList>
     <StyledLogoutButton as={NavLink} to="/login" icon={logoutIcon} />
   </StyledWrapper>
 );
+
+Sidebar.propTypes = {
+  pageType: PropTypes.string,
+};
 
 export default Sidebar;
