@@ -73,29 +73,18 @@ const StyledLinkButton = styled.a`
   top: 25px;
 `;
 
-const Card = ({ cardType }) => (
+const Card = ({ cardType, title, created, twitterName, articleUrl, content }) => (
   <StyledWrapper>
     <InnerWrapper activeColor={cardType}>
-      <StyledHeading>React Card</StyledHeading>
-      <DateInfo>3 days ago</DateInfo>
-      {cardType === 'secondary' && <StyledAvatar src="https://avatars.io/platform/userId" />}
-      {cardType === 'tertiary' && (
-        <StyledLinkButton href="https://pl.reactjs.org/docs/getting-started.html" />
+      <StyledHeading>{title}</StyledHeading>
+      <DateInfo>{created}</DateInfo>
+      {cardType === 'secondary' && (
+        <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />
       )}
+      {cardType === 'tertiary' && <StyledLinkButton href={articleUrl} />}
     </InnerWrapper>
     <InnerWrapper flex>
-      <StyledParagraph>
-        Vero diam labore tempor ipsum aliquyam ipsum et et magna. Lorem sit diam dolore vero. Sit
-        invidunt sit clita stet. Ipsum duo consetetur dolores accusam eirmod duo, rebum et tempor
-        sadipscing kasd kasd amet, sit labore voluptua sit kasd magna dolores ea dolor invidunt,
-        tempor nonumy magna sadipscing aliquyam sadipscing est, elitr diam elitr nonumy lorem clita
-        gubergren lorem kasd sadipscing, ipsum stet ipsum accusam ut labore lorem justo eirmod.
-        Voluptua erat dolor est takimata, amet ea labore elitr ipsum sadipscing tempor ut sanctus.
-        Sadipscing sit aliquyam et invidunt ut aliquyam, at et stet sed ea, kasd dolore dolor
-        gubergren et ipsum ut ea, invidunt et dolor clita erat sanctus sadipscing tempor dolor
-        takimata. Gubergren sea ea consetetur stet sanctus, voluptua et sed erat ipsum sadipscing
-        lorem, dolor stet labore aliquyam amet sed.
-      </StyledParagraph>
+      <StyledParagraph>{content}</StyledParagraph>
       <Button secondary>Remove</Button>
     </InnerWrapper>
   </StyledWrapper>
@@ -103,10 +92,17 @@ const Card = ({ cardType }) => (
 
 Card.propTypes = {
   cardType: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
+  title: PropTypes.string.isRequired,
+  created: PropTypes.string.isRequired,
+  twitterName: PropTypes.string,
+  articleUrl: PropTypes.string,
+  content: PropTypes.string.isRequired,
 };
 
 Card.defaultProps = {
   cardType: 'primary',
+  twitterName: 'null',
+  articleUrl: 'null',
 };
 
 export default Card;

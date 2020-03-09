@@ -30,7 +30,7 @@ const StyledParagraph = styled(Paragraph)`
   font-weight: ${({ theme }) => theme.bold};
 `;
 
-const UserPageTemplate = ({ children, pageType }) => {
+const UserPageTemplate = ({ children, pageType, pageName }) => {
   return (
     <>
       <Sidebar pageType={pageType} />
@@ -38,7 +38,7 @@ const UserPageTemplate = ({ children, pageType }) => {
         <StyledPageHeader>
           <Input search placeholder="Search..." />
           <StyledHeading big as="h1">
-            Notes
+            {pageName}
           </StyledHeading>
           <StyledParagraph>12 notes </StyledParagraph>
         </StyledPageHeader>
@@ -49,8 +49,9 @@ const UserPageTemplate = ({ children, pageType }) => {
 };
 
 UserPageTemplate.propTypes = {
-  children: PropTypes.element.isRequired,
-  pageType: PropTypes.oneOf(['note', 'twitter', 'article']),
+  children: PropTypes.instanceOf(Array).isRequired,
+  pageType: PropTypes.oneOf(['note', 'secondary', 'tertiary']),
+  pageName: PropTypes.oneOf(['Notes', 'Twitters', 'Articles']),
 };
 
 export default UserPageTemplate;
