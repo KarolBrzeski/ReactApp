@@ -5,7 +5,10 @@ import Card from 'components/molecules/Card/Card';
 const Notes = () => {
   return (
     <UserPageTemplate>
-      <Card />
+      <Card cardType="primary" />
+      <Card cardType="primary" />
+      <Card cardType="primary" />
+      <Card cardType="primary" />
     </UserPageTemplate>
   );
 };
