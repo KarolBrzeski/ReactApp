@@ -1,5 +1,3 @@
-/* eslint-disable react/require-default-props */
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -52,7 +50,7 @@ const Sidebar = ({ pageType }) => (
     <StyledLogoLink to="/" />
     <StyledLinksList>
       <li>
-        <ButtonIcon exact as={NavLink} to="/" icon={penIcon} activeclass="active" />
+        <ButtonIcon as={NavLink} to="/notes" icon={penIcon} activeclass="active" />
       </li>
       <li>
         <ButtonIcon as={NavLink} to="/articles" icon={bulbIcon} activeclass="active" />
@@ -66,7 +64,11 @@ const Sidebar = ({ pageType }) => (
 );
 
 Sidebar.propTypes = {
-  pageType: PropTypes.string,
+  pageType: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
+};
+
+Sidebar.defaultProps = {
+  pageType: 'primary',
 };
 
 export default Sidebar;
