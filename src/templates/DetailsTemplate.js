@@ -75,7 +75,7 @@ const DetailsTemplate = ({
         <StyledImage alt={title} src={`https://avatars.io/twitter/${twitterName}`} />
       )}
 
-      <Button as={Link} to={`/${pageName}`}>
+      <Button as={Link} to={`/${pageName}`} type={pageType}>
         save / close
       </Button>
     </StyledWrapper>
