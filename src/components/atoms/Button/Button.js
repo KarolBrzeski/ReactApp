@@ -1,7 +1,27 @@
 import styled, { css } from 'styled-components';
+import { theme } from 'theme/mainTheme';
 
 const Button = styled.button`
-  background: ${({ theme, color }) => (color ? `${color}` : theme.primary)};
+ ${({ type }) =>
+   (type === 'primary' || type === undefined) &&
+   css`
+     background: ${theme.primary};
+   `}
+
+  ${({ type }) =>
+    type === 'secondary' &&
+    css`
+      background: ${theme.secondary};
+    `}
+
+  ${({ type }) =>
+    type === 'tertiary' &&
+    css`
+      background: ${theme.tertiary};
+    `} 
+
+  background: ${({ color }) => `${color}`};
+
   color: ${({ textColor }) => textColor || 'black'};
   width: 220px;
   height: ${({ height }) => height || '45px'};

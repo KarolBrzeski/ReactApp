@@ -1,6 +1,5 @@
 import React from 'react';
 import { withKnobs, text, select } from '@storybook/addon-knobs';
-import { theme } from '../../../theme/mainTheme';
 import Button from './Button';
 
 export default {
@@ -39,10 +38,23 @@ export const DynamicButton = () => {
   );
 };
 
-export const Aqua = () => (
-  <Button color="#00FFFF" textColor="black">
-    AQUA
+export const Notes = () => (
+  <Button type="primary" textColor="black">
+    Notes
   </Button>
 );
-export const Primary = () => <Button theme={theme}>Hello Karol</Button>;
+
+export const Articles = () => (
+  <Button type="secondary" textColor="black">
+    Articles
+  </Button>
+);
+
+export const Twitters = () => (
+  <Button type="tertiary" textColor="black">
+    Twitters
+  </Button>
+);
+
+export const Primary = () => <Button>Hello Karol</Button>;
 export const Secondary = () => <Button secondary>Hello Karol</Button>;
