@@ -24,7 +24,15 @@ const Twitters = ({ twitters }) => {
 };
 
 Twitters.propTypes = {
-  twitters: PropTypes.arrayOf(PropTypes.object).isRequired,
+  twitters: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      created: PropTypes.string.isRequired,
+      twitterName: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 const mapStateToProps = state => {
