@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from 'components/organisms/Sidebar';
+import Sidebar from 'components/organisms/Sidebar/Sidebar';
 import StoryRouter from 'storybook-react-router';
 
 export default {

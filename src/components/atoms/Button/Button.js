@@ -3,19 +3,19 @@ import { theme } from 'theme/mainTheme';
 
 const Button = styled.button`
  ${({ type }) =>
-   (type === 'primary' || type === undefined) &&
+   (type === 'primary' || type === 'notes' || type === undefined) &&
    css`
      background: ${theme.primary};
    `}
 
   ${({ type }) =>
-    type === 'secondary' &&
+    (type === 'secondary' || type === 'twitters') &&
     css`
       background: ${theme.secondary};
     `}
 
   ${({ type }) =>
-    type === 'tertiary' &&
+    (type === 'tertiary' || type === 'articles') &&
     css`
       background: ${theme.tertiary};
     `} 
