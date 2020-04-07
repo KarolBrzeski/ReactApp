@@ -8,6 +8,9 @@ import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
 
+transform: translate(${({ isVisible }) => (isVisible ? '0' : '100%')});
+transition: transform .4s ease-in-out;
+
 ${({ type }) =>
   (type === 'notes' || type === undefined) &&
   css`
@@ -44,17 +47,26 @@ const StyledTextArea = styled(Input)`
   height: 30vh;
 `;
 
-const NewItemBar = ({ pageContext }) => (
-  <StyledWrapper type={pageContext}>
+const StyledInput = styled(Input)`
+  margin-bottom: 30px;
+`;
+
+const NewItemBar = ({ pageContext, isVisible }) => (
+  <StyledWrapper isVisible={isVisible} type={pageContext}>
     <Heading big>Create new {pageContext}</Heading>
-    <Input placeholder="title" />
+    <StyledInput
+      placeholder={pageContext === 'twitters' ? 'Account Name eg. Karol Nowak' : 'Title'}
+    />
+    {pageContext === 'articles' && <Input placeholder="link" />}
+
     <StyledTextArea as="textarea" placeholder="title" />
-    <Button type={pageContext}>Add Note</Button>
+    <Button type={pageContext}>Add {pageContext}</Button>
   </StyledWrapper>
 );
 
 NewItemBar.propTypes = {
   pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+  isVisible: PropTypes.bool.isRequired,
 };
 
 NewItemBar.defaultProps = {

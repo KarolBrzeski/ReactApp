@@ -33,6 +33,9 @@ const Button = styled.button`
   text-transform: uppercase;
   cursor: pointer;
   padding: 10px;
+  :active, :visited, :focus, :hover, :checked{
+    outline:none;
+  }
 
   ${({ secondary }) =>
     secondary &&

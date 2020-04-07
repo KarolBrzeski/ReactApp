@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import UserPageTemplate from 'templates/UserPageTemplate';
@@ -8,6 +8,7 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import ButtonIcon from 'components/atoms/Buttonicon/Buttonicon';
 import NewItemBar from 'components/organisms/NewItemBar/NewItemBar';
 import plusIcon from 'assets/icons/plus.svg';
+import backIcon from 'assets/icons/back.svg';
 import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
@@ -38,6 +39,7 @@ const StyledParagraph = styled(Paragraph)`
 
 const StyledButtonIcon = styled(ButtonIcon)`
   position: fixed;
+  z-index: 19999;
   bottom: 40px;
   right: 40px;
   border-radius: 50px;
@@ -45,24 +47,43 @@ const StyledButtonIcon = styled(ButtonIcon)`
   border: 5px dotted rgba(131, 232, 90, 0.92);
 `;
 
-const GridTemplate = ({ children, pageType, pageContext }) => {
-  return (
-    <UserPageTemplate pageType={pageType}>
-      <StyledWrapper>
-        <StyledPageHeader>
-          <Input search placeholder="Search..." />
-          <StyledHeading big as="h1">
-            {pageContext}
-          </StyledHeading>
-          <StyledParagraph>12 {pageContext} </StyledParagraph>
-        </StyledPageHeader>
-        <StyleGrid>{children}</StyleGrid>
-        <StyledButtonIcon icon={plusIcon} />
-        <NewItemBar />
-      </StyledWrapper>
-    </UserPageTemplate>
-  );
-};
+class GridTemplate extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isNewItemBarVisible: false,
+    };
+  }
+
+  handleNewItemBarToggle = () => {
+    this.setState(prevState => ({ isNewItemBarVisible: !prevState.isNewItemBarVisible }));
+  };
+
+  render() {
+    const { children, pageType, pageContext } = this.props;
+    const { isNewItemBarVisible } = this.state;
+
+    return (
+      <UserPageTemplate pageType={pageType}>
+        <StyledWrapper>
+          <StyledPageHeader>
+            <Input search placeholder="Search..." />
+            <StyledHeading big as="h1">
+              {pageContext}
+            </StyledHeading>
+            <StyledParagraph>12 {pageContext} </StyledParagraph>
+          </StyledPageHeader>
+          <StyleGrid>{children}</StyleGrid>
+          <StyledButtonIcon
+            icon={isNewItemBarVisible === true ? backIcon : plusIcon}
+            onClick={this.handleNewItemBarToggle}
+          />
+          <NewItemBar isVisible={isNewItemBarVisible} />
+        </StyledWrapper>
+      </UserPageTemplate>
+    );
+  }
+}
 
 GridTemplate.propTypes = {
   children: PropTypes.arrayOf(PropTypes.object).isRequired,
