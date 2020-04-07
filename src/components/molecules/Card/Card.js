@@ -1,5 +1,7 @@
 /* eslint-disable react/require-default-props */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { removeItem as removeItemAction } from 'actions/index';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import styled, { css } from 'styled-components';
@@ -85,7 +87,17 @@ class Card extends Component {
   handleCardClick = () => this.setState({ redirect: true });
 
   render() {
-    const { id, cardType, cardName, title, created, twitterName, articleUrl, content } = this.props;
+    const {
+      id,
+      cardType,
+      cardName,
+      title,
+      created,
+      twitterName,
+      articleUrl,
+      content,
+      removeItem,
+    } = this.props;
     const { redirect } = this.state;
 
     if (redirect) {
@@ -103,7 +115,9 @@ class Card extends Component {
         </InnerWrapper>
         <InnerWrapper flex>
           <StyledParagraph>{content}</StyledParagraph>
-          <Button secondary>Remove</Button>
+          <Button secondary onClick={() => removeItem(cardName, id)}>
+            Remove
+          </Button>
         </InnerWrapper>
       </StyledWrapper>
     );
@@ -113,12 +127,13 @@ class Card extends Component {
 Card.propTypes = {
   id: PropTypes.number.isRequired,
   cardType: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
-  cardName: PropTypes.oneOf(['Notes', 'Twitters', 'Articles']),
+  cardName: PropTypes.oneOf(['notes', 'twitters', 'articles']),
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
   twitterName: PropTypes.string,
   articleUrl: PropTypes.string,
   content: PropTypes.string.isRequired,
+  removeItem: PropTypes.func.isRequired,
 };
 
 Card.defaultProps = {
@@ -127,4 +142,8 @@ Card.defaultProps = {
   articleUrl: 'null',
 };
 
-export default Card;
+const mapDispatchToProps = dispatch => ({
+  removeItem: (itemType, id) => dispatch(removeItemAction(itemType, id)),
+});
+
+export default connect(null, mapDispatchToProps)(Card);

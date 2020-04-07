@@ -6,11 +6,11 @@ import GridTemplate from 'templates/GridTemplate';
 
 const Articles = ({ articles }) => {
   return (
-    <GridTemplate pageType="tertiary" pageName="Articles">
+    <GridTemplate pageType="tertiary" pageName="articles">
       {articles.map(({ id, title, content, articleUrl, created }) => (
         <Card
           cardType="tertiary"
-          cardName="Articles"
+          cardName="articles"
           id={id}
           title={title}
           content={content}
